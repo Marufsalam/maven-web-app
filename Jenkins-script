@@ -1,0 +1,20 @@
+pipeline{
+agent any
+tools{
+maven "maven3.8.6"
+}
+stages{
+stage('GitClone'){
+steps{
+sh "echo Git Clone"
+git credentialsId: 'Githubpassword', url: 'https://github.com/Marufsalam/maven-web-app.git'
+}
+}
+stage('Build'){
+steps{
+sh "echo Start of Build"
+sh "mvn package"
+}
+}
+}
+}
